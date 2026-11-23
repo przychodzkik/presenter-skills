@@ -190,4 +190,23 @@ for h in Title Body Takeaway; do
 done
 check "README marks slidedoc available" grep -q '`slidedoc` .*available' README.md
 
+# Ticket 08: presenter-start (router).
+ROUTER=skills/presenter-start/SKILL.md
+check "router has name in frontmatter"       grep -q '^name: presenter-start$' "$ROUTER"
+check "router description says where to start" \
+  bash -c "grep '^description:' '$ROUTER' | grep -qi 'start'"
+check "router reads the presentation folder" grep -qi 'presentation/' "$ROUTER"
+check "router asks at most one question"     grep -qi 'at most one question' "$ROUTER"
+check "router writes no files"               grep -qi 'writes no files' "$ROUTER"
+check "router never runs another skill"      grep -qi 'never runs' "$ROUTER"
+for s in presentation-brief storytelling structuring scripting slide-plan slidedoc; do
+  check "router can name skill: $s" grep -q "$s" "$ROUTER"
+done
+for state in 'Empty' 'Brief only' 'Brief and outline' 'Script' 'Slide plan'; do
+  check "router covers folder state: $state" grep -q "| $state" "$ROUTER"
+done
+check "router gives a one-line reason"       grep -qi 'one-line reason' "$ROUTER"
+check "router sends existing drafts to scripting" grep -qi 'draft' "$ROUTER"
+check "README marks presenter-start available" grep -q '`presenter-start` .*available' README.md
+
 exit $fail
