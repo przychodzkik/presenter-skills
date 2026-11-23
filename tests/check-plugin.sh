@@ -90,4 +90,29 @@ check "storytelling writes hook.md and story.md"    bash -c "grep -q 'hook.md' '
 check "storytelling has no humor content"           bash -c "! grep -qiE 'humou?r|joke' '$STORY'"
 check "README marks storytelling available" grep -q '`storytelling` .*available' README.md
 
+# Ticket 04: structuring.
+STRUCT=skills/structuring/SKILL.md
+OUTLINE=skills/structuring/OUTLINE-FORMAT.md
+check "structuring skill has name in frontmatter" grep -q '^name: structuring$' "$STRUCT"
+for w in outline structure; do
+  check "structuring description triggers on: $w" \
+    bash -c "grep '^description:' '$STRUCT' | grep -qi '$w'"
+done
+for p in 'problem' 'anecdote' 'case' 'data' 'thesis' 'SCQA'; do
+  check "structuring body pattern: $p" grep -qi "$p" "$STRUCT"
+done
+check "structuring ties blocks to the core message"  grep -qi 'core message' "$STRUCT"
+check "structuring lists cuts with reasons"          grep -qi 'cut' "$STRUCT"
+check "structuring requires exactly one call to action" grep -qi 'exactly one call to action' "$STRUCT"
+check "structuring makes timings add up"             grep -qi 'add up' "$STRUCT"
+check "structuring works without a brief"            grep -qi 'no .presentation/brief.md' "$STRUCT"
+check "structuring reads teach or persuade goal"     grep -qi 'persuade' "$STRUCT"
+check "structuring has no sales-funnel or pricing content" \
+  bash -c "! grep -qiE 'funnel|pricing' '$STRUCT'"
+check "structuring points to its format file"        grep -q 'OUTLINE-FORMAT.md' "$STRUCT"
+for h in Opener Body Close Cuts; do
+  check "outline format has section: $h" grep -q "^## $h" "$OUTLINE"
+done
+check "README marks structuring available" grep -q '`structuring` .*available' README.md
+
 exit $fail

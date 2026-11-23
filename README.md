@@ -21,7 +21,7 @@ Add the marketplace, then install the plugin:
 | `presenter-start` | Tells you which skill to use next | planned |
 | `presentation-brief` | Interviews you about the occasion, audience and goal | available |
 | `storytelling` | Hooks and stories from your real material | available |
-| `structuring` | Outline: opener, body blocks, one call to action | planned |
+| `structuring` | Outline: opener, body blocks, one call to action | available |
 | `scripting` | The full speakable script | planned |
 | `slide-plan` | Written plan for live slides | planned |
 | `slidedoc` | A slide document written to be read | planned |
