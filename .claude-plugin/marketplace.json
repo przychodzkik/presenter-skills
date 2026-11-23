@@ -1,0 +1,13 @@
+{
+  "name": "presenter-skills",
+  "owner": {
+    "name": "Presenter Skills contributors"
+  },
+  "plugins": [
+    {
+      "name": "presenter-skills",
+      "source": "./",
+      "description": "Small skills that help you turn an idea and raw materials into a better speech or presentation."
+    }
+  ]
+}

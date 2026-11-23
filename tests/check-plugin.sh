@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Structure and provenance checks for the plugin (ticket 01).
+set -u
+cd "$(dirname "$0")/.."
+
+fail=0
+check() { # description, command...
+  local desc="$1"; shift
+  if "$@" >/dev/null 2>&1; then echo "ok   - $desc"; else echo "FAIL - $desc"; fail=1; fi
+}
+
+SKILL=skills/presenting-vocabulary/SKILL.md
+PUBLISHED=(README.md LICENSE CONTEXT.md .claude-plugin skills docs tests/check-plugin.sh)
+
+check "plugin manifest is valid JSON"      python3 -c 'import json;json.load(open(".claude-plugin/plugin.json"))'
+check "marketplace manifest is valid JSON" python3 -c 'import json;json.load(open(".claude-plugin/marketplace.json"))'
+check "marketplace lists the plugin"       grep -q '"presenter-skills"' .claude-plugin/marketplace.json
+check "MIT license present"                grep -q "MIT License" LICENSE
+check "skill has name in frontmatter"      grep -q '^name: presenting-vocabulary$' "$SKILL"
+check "skill has description"              grep -q '^description: .\{20,\}' "$SKILL"
+check "README has Sources section"         grep -q '^## Sources' README.md
+check "README has provenance note"         grep -qi 'own training and practice' README.md
+check "README has install instructions"    grep -qi '## Install' README.md
+
+# Every glossary term in CONTEXT.md appears in the skill.
+terms=$(grep -o '^\*\*[^*]*\*\*' CONTEXT.md | tr -d '*')
+while IFS= read -r term; do
+  [ -z "$term" ] && continue
+  check "skill defines: $term" grep -qF "$term" "$SKILL"
+done <<< "$terms"
+
+# Sources and myths.
+check "skill explains both evidence tags" \
+  bash -c "grep -q 'research-backed' '$SKILL' && grep -q 'craft heuristic' '$SKILL'"
+check "every framework row is tagged" \
+  bash -c "! grep '^| ' skills/presenting-vocabulary/FRAMEWORKS.md | tail -n +3 | grep -vE 'research-backed|craft heuristic'"
+check "Mehrabian myth is called out" grep -qi 'mehrabian' "$SKILL"
+
+# Provenance: banned terms come from a local-only list, so this file stays publishable.
+if [ -f tests/banned-terms.txt ]; then
+  check "no course names or labels in published files" \
+    bash -c "! grep -rFi -f tests/banned-terms.txt ${PUBLISHED[*]}"
+else
+  echo "skip - provenance scan (tests/banned-terms.txt not present)"
+fi
+
+# Every top-level directory that is not part of the plugin must be git-ignored.
+for d in */; do
+  d=${d%/}
+  case "$d" in skills|tests|docs) continue;; esac
+  check "non-plugin directory is git-ignored: $d" grep -qF "$d" .gitignore
+done
+check "pre-split SKILL.md is git-ignored" grep -qx '/SKILL.md' .gitignore
+
+exit $fail

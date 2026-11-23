@@ -1,0 +1,7 @@
+{
+  "name": "presenter-skills",
+  "version": "0.1.0",
+  "description": "Small skills that help you turn an idea and raw materials into a better speech or presentation: audience brief, hook, story, structure, script, and slide plan.",
+  "license": "MIT",
+  "keywords": ["presentation", "public-speaking", "storytelling", "speech", "slides"]
+}
