@@ -70,4 +70,24 @@ check "style notes are free text, no voice-profile schema" \
 check "README marks presentation-brief available" \
   grep -q '`presentation-brief` .*available' README.md
 
+# Ticket 03: storytelling.
+STORY=skills/storytelling/SKILL.md
+check "storytelling skill has name in frontmatter" grep -q '^name: storytelling$' "$STORY"
+for w in hook story anecdote opening; do
+  check "storytelling description triggers on: $w" \
+    bash -c "grep '^description:' '$STORY' | grep -qi '$w'"
+done
+for m in 'information gap' 'anomaly' 'expectation break'; do
+  check "storytelling names hook mechanism: $m" grep -qi "$m" "$STORY"
+done
+for e in hero desire obstacle change lesson; do
+  check "storytelling story element: $e" grep -qi "$e" "$STORY"
+done
+check "storytelling covers the Sinatra test"        grep -q 'Sinatra test' "$STORY"
+check "storytelling asks for real material first"   grep -qi 'real material' "$STORY"
+check "storytelling works without a brief"          grep -qi 'no .presentation/brief.md' "$STORY"
+check "storytelling writes hook.md and story.md"    bash -c "grep -q 'hook.md' '$STORY' && grep -q 'story.md' '$STORY'"
+check "storytelling has no humor content"           bash -c "! grep -qiE 'humou?r|joke' '$STORY'"
+check "README marks storytelling available" grep -q '`storytelling` .*available' README.md
+
 exit $fail

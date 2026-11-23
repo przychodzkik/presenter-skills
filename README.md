@@ -20,7 +20,7 @@ Add the marketplace, then install the plugin:
 | `presenting-vocabulary` | Shared terms and cited frameworks the other skills use | available |
 | `presenter-start` | Tells you which skill to use next | planned |
 | `presentation-brief` | Interviews you about the occasion, audience and goal | available |
-| `storytelling` | Hooks and stories from your real material | planned |
+| `storytelling` | Hooks and stories from your real material | available |
 | `structuring` | Outline: opener, body blocks, one call to action | planned |
 | `scripting` | The full speakable script | planned |
 | `slide-plan` | Written plan for live slides | planned |
