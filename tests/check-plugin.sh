@@ -209,4 +209,24 @@ check "router gives a one-line reason"       grep -qi 'one-line reason' "$ROUTER
 check "router sends existing drafts to scripting" grep -qi 'draft' "$ROUTER"
 check "README marks presenter-start available" grep -q '`presenter-start` .*available' README.md
 
+# Ticket 09: release checks.
+check "exactly 8 skills ship" bash -c "[ \$(ls -d skills/*/ | wc -l) -eq 8 ]"
+for d in skills/*/; do
+  n=$(basename "$d")
+  check "directory matches frontmatter name: $n" grep -q "^name: $n$" "$d/SKILL.md"
+done
+check "every skill description is unique" \
+  bash -c "[ \$(grep -h '^description:' skills/*/SKILL.md | sort | uniq -d | wc -l) -eq 0 ]"
+check "every description is under 400 characters" \
+  bash -c "! grep -h '^description:' skills/*/SKILL.md | awk 'length(\$0) > 410 {f=1} END {exit !f}'"
+check "README has no planned skills left" bash -c "! grep -q '| planned |' README.md"
+check "marketplace has a description" python3 -c 'import json;assert json.load(open(".claude-plugin/marketplace.json")).get("metadata",{}).get("description")'
+check "plugin has an author" python3 -c 'import json;assert json.load(open(".claude-plugin/plugin.json")).get("author")'
+if command -v claude >/dev/null 2>&1; then
+  check "claude plugin validate passes" \
+    bash -c "claude plugin validate . 2>&1 | grep -q 'Validation passed'"
+else
+  echo "skip - claude plugin validate (claude not on PATH)"
+fi
+
 exit $fail
