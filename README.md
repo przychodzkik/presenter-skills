@@ -33,11 +33,9 @@ The skills reply in the language you write in.
 The skills are built on public frameworks, and each claim is tagged *research-backed* or *craft heuristic*:
 
 - Chip Heath and Dan Heath, *Made to Stick*
-- Nancy Duarte, *Resonate* and the slidedoc format
-- Daniel Kahneman, *Thinking, Fast and Slow*
+- Nancy Duarte, the slidedoc format
 - Robert McKee, *Story*
 - George Loewenstein, information-gap theory of curiosity
-- Lehne and Koelsch, a model of tension and suspense
 - Barbara Minto, *The Pyramid Principle*
 - S. I. Hayakawa, *Language in Thought and Action* (ladder of abstraction)
 - Cole Nussbaumer Knaflic, *Storytelling with Data*

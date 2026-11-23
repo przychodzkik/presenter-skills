@@ -10,7 +10,7 @@ check() { # description, command...
 }
 
 SKILL=skills/presenting-vocabulary/SKILL.md
-PUBLISHED=(README.md LICENSE CONTEXT.md .claude-plugin skills docs tests/check-plugin.sh)
+PUBLISHED=(README.md LICENSE CONTEXT.md .gitignore .claude-plugin skills docs tests/check-plugin.sh)
 
 check "plugin manifest is valid JSON"      python3 -c 'import json;json.load(open(".claude-plugin/plugin.json"))'
 check "marketplace manifest is valid JSON" python3 -c 'import json;json.load(open(".claude-plugin/marketplace.json"))'
@@ -48,9 +48,10 @@ fi
 for d in */; do
   d=${d%/}
   case "$d" in skills|tests|docs) continue;; esac
-  check "non-plugin directory is git-ignored: $d" grep -qF "$d" .gitignore
+  check "non-plugin directory is git-ignored: $d" git check-ignore -q "$d"
 done
-check "pre-split SKILL.md is git-ignored" grep -qx '/SKILL.md' .gitignore
+check "pre-split SKILL.md is git-ignored" git check-ignore -q SKILL.md
+check "scratch tickets are git-ignored"    git check-ignore -q .scratch
 
 # Ticket 02: presentation-brief.
 BRIEF=skills/presentation-brief/SKILL.md
@@ -61,7 +62,7 @@ for h in Occasion Audience Before-state After-state Goal Material "Opening and c
   check "brief format has section: $h" grep -q "^## $h" "$FORMAT"
 done
 check "brief format records what the audience knows about the speaker" grep -qi 'knows about the speaker' "$FORMAT"
-check "brief skill asks before drafting"    grep -q 'Do not draft' "$BRIEF"
+check "brief skill asks before drafting"    grep -q 'only output' "$BRIEF"
 check "brief skill requires confirmed core message" grep -qi 'confirm' "$BRIEF"
 check "brief skill skips questions already answered" grep -qi 'already answered' "$BRIEF"
 check "brief skill points to its format file" grep -q 'BRIEF-FORMAT.md' "$BRIEF"
@@ -202,7 +203,7 @@ check "router never runs another skill"      grep -qi 'never runs' "$ROUTER"
 for s in presentation-brief storytelling structuring scripting slide-plan slidedoc; do
   check "router can name skill: $s" grep -q "$s" "$ROUTER"
 done
-for state in 'Empty' 'Brief only' 'Brief and outline' 'Script' 'Slide plan'; do
+for state in 'Empty' 'Brief only' 'Hook or story only' 'Outline only' 'Brief and outline' 'Script' 'Slide plan' 'Slidedoc only'; do
   check "router covers folder state: $state" grep -q "| $state" "$ROUTER"
 done
 check "router gives a one-line reason"       grep -qi 'one-line reason' "$ROUTER"
@@ -222,6 +223,24 @@ check "every description is under 400 characters" \
 check "README has no planned skills left" bash -c "! grep -q '| planned |' README.md"
 check "marketplace has a description" python3 -c 'import json;assert json.load(open(".claude-plugin/marketplace.json")).get("metadata",{}).get("description")'
 check "plugin has an author" python3 -c 'import json;assert json.load(open(".claude-plugin/plugin.json")).get("author")'
+# Review fixes.
+while IFS= read -r line; do
+  check "skill copies glossary line exactly: $line" grep -qF -- "$line" "$SKILL"
+done < <(grep '^_Avoid_' CONTEXT.md)
+for d in skills/*/; do
+  check "reply-language line in $(basename "$d")" grep -q "user's language" "$d/SKILL.md"
+done
+check "brief records Q&A length"            grep -q 'Q&A length' "$FORMAT"
+check "structuring asks for Q&A length"    grep -q 'Q&A length' "$STRUCT"
+check "outline opener and close name what they serve" \
+  bash -c "[ \$(grep -c '^- Serves:' '$OUTLINE') -ge 3 ]"
+check "scripting adds cue ids when rewriting a draft" grep -qi 'add cue ids' "$SCRIPTING"
+check "storytelling offers to save intake answers"    grep -qi 'offer to save' "$STORY"
+check "storytelling shows a Sinatra test example"     grep -qi 'for example' "$STORY"
+check "slide-plan description says live slides" \
+  bash -c "grep '^description:' '$PLAN' | grep -qi 'live slides'"
+check "frameworks cover contrast through figure and ground" grep -qi 'figure and ground' skills/presenting-vocabulary/FRAMEWORKS.md
+check "CONTEXT.md intro does not mention rehearsal" bash -c "! head -4 CONTEXT.md | grep -qi rehearsal"
 if command -v claude >/dev/null 2>&1; then
   check "claude plugin validate passes" \
     bash -c "claude plugin validate . 2>&1 | grep -q 'Validation passed'"

@@ -5,11 +5,11 @@ description: Turn raw material and a core message into a talk outline. Use when 
 
 # Structuring
 
-Produce `presentation/outline.md`: opener, body blocks, close, and a list of what was cut. Terms follow `presenting-vocabulary`; the layout is in [OUTLINE-FORMAT.md](OUTLINE-FORMAT.md).
+Produce `presentation/outline.md`: opener, body blocks, close, and a list of what was cut. Terms follow `presenting-vocabulary`; the layout is in [OUTLINE-FORMAT.md](OUTLINE-FORMAT.md). Converse and write file contents in the user's language; keep file names and section headings in English so the other skills can find them.
 
 ## 1. Gather
 
-Read `presentation/brief.md`, `presentation/hook.md` and `presentation/story.md` when they exist. With no `presentation/brief.md`, ask at most four questions: the one-sentence core message, the audience and what they know, the duration including Q&A, and whether the goal is to teach or persuade. Then collect the raw material: everything the user wants to say, in any order.
+Read `presentation/brief.md`, `presentation/hook.md` and `presentation/story.md` when they exist. With no `presentation/brief.md`, ask at most four questions: the one-sentence core message, the audience and what they know, the talk's duration and the Q&A length, and whether the goal is to teach or persuade. Then collect the raw material: everything the user wants to say, in any order.
 
 Done when you can state the core message, the duration, the goal and the list of raw material, and the user agrees.
 
@@ -36,7 +36,7 @@ Done when every block has a pattern, its single claim, the material it uses, and
 
 ## 4. Opener and close
 
-Use the chosen hook in `presentation/hook.md` as the opener. When there is none, write "hook needed" and point to `storytelling`. Place any story from `presentation/story.md` in the block it fits.
+Use the chosen hook in `presentation/hook.md` as the opener. When there is none, write "hook needed" and point to `storytelling`. Place any story from `presentation/story.md` in the block it fits. The opener and the close each state which part of the core message they serve.
 
 The close restates the move from before-state to after-state and gives exactly one call to action that is concrete and doable by the audience.
 

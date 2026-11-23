@@ -5,7 +5,7 @@ description: Find where to start when preparing a speech or presentation. Use wh
 
 # Presenter start
 
-Name the next skill and why. This skill writes no files and never runs another skill; it only points.
+Name the next skill and why. This skill writes no files and never runs another skill; it only points. Converse in the user's language.
 
 ## 1. Read the folder
 
@@ -19,9 +19,13 @@ Done when you can name the state from the table.
 |---|---|---|
 | Empty or no folder | Ask the one question below, then route from the answer | Nothing is saved, so the user's answer decides |
 | Brief only | `structuring` if the user has material to organize; `storytelling` if they want a hook or a story | The brief fixes the audience and core message, so the next piece can start |
+| Hook or story only | `presentation-brief` | The hook and story need an audience and a core message before they can be placed |
+| Outline only | `scripting` | The outline already records the core message, goal and duration |
 | Brief and outline | `storytelling` if the outline says "hook needed"; otherwise `scripting` | The outline is ready for words, and a missing hook should come first |
 | Script | `slide-plan` for slides shown live; `slidedoc` for slides read alone | The words exist, so visuals can follow from them |
 | Slide plan | Done; offer `slidedoc` for a reading version, or `scripting` to revise the words | Every stage has output |
+| Slidedoc only | `scripting` if the user will also present live; otherwise done | A live talk needs its script before its slides |
+| Slide plan and slidedoc | Done; offer `scripting` to revise the words | Every stage has output |
 
 When the state needs a choice between two skills, that choice is the one question.
 

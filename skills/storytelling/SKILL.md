@@ -5,11 +5,11 @@ description: Create hook options and shape stories for a talk from the user's re
 
 # Storytelling
 
-Produce hooks and stories from what the user actually has. Terms follow `presenting-vocabulary`; sources are in its FRAMEWORKS.md.
+Produce hooks and stories from what the user actually has. Terms follow `presenting-vocabulary`; sources are in its FRAMEWORKS.md. Converse and write file contents in the user's language; keep file names and section headings in English so the other skills can find them.
 
 ## 1. Gather context
 
-Read `presentation/brief.md`. With no `presentation/brief.md`, ask at most four questions: the topic and the one-sentence core message, who the audience is and what they already know, the duration, and the material the user has. Suggest `presentation-brief` afterwards to save the answers properly.
+Read `presentation/brief.md`. With no `presentation/brief.md`, ask at most four questions: the topic and the one-sentence core message, who the audience is and what they already know, the duration, and the material the user has. Offer to save the answers afterwards by running `presentation-brief`.
 
 Done when you can state the core message, the audience's before-state and the available material in three lines, and the user agrees.
 
@@ -35,7 +35,7 @@ Done when the user has chosen one hook and the others are kept as alternatives.
 
 For each case or anecdote the user wants to tell, shape it into a **story** with five elements: hero, desire, obstacle, change, lesson (craft heuristic, McKee). Name any element that is missing and ask for it. The lesson must serve the core message.
 
-When a claim needs credibility, ask for one example that proves it by implication: the **Sinatra test**.
+When a claim needs credibility, ask for one example that proves it by implication: the **Sinatra test**. For example, the claim "our system is secure" is proved by "we run the payments of three national banks", with no further argument.
 
 Done when every element of every story has one concrete sentence and the user confirms the lesson.
 

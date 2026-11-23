@@ -11,6 +11,7 @@ Terms follow `presenting-vocabulary`.
 
 ## Opener
 - Hook: <from presentation/hook.md, or "hook needed">
+- Serves: <part of the core message>
 - Minutes:
 
 ## Body
@@ -26,6 +27,7 @@ Terms follow `presenting-vocabulary`.
 ## Close
 - Before-state to after-state, restated:
 - Call to action (exactly one):
+- Serves: <part of the core message>
 - Minutes:
 
 ## Cuts

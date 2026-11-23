@@ -8,7 +8,7 @@ Create the `presentation/` folder in the working directory if it does not exist.
 ## Occasion
 - Topic:
 - Date and place (or platform):
-- Duration, including Q&A:
+- Talk length and Q&A length:
 - Live or online, and whether the audience can interrupt:
 - Room or audience size:
 - Atmosphere (casual to formal), and who speaks before and after:

@@ -1,11 +1,11 @@
 ---
 name: slidedoc
-description: Write a slide document meant to be read, not presented. Use when the user wants slides to send, leave behind or read alone, including text-heavy slides, with or without a talk behind them.
+description: Write a slidedoc, slides that a reader can follow without a speaker. Use when the user wants text-heavy or send-ahead slides, with or without a talk behind them.
 ---
 
 # Slidedoc
 
-Produce `presentation/slidedoc.md`: a **slidedoc** (craft heuristic, Duarte) that carries its whole argument without a speaker. It is a separate document, not derived from `presentation/slides.md`, because live slides are sparse on purpose and a slidedoc must be complete. Terms follow `presenting-vocabulary`; the layout is in [SLIDEDOC-FORMAT.md](SLIDEDOC-FORMAT.md).
+Produce `presentation/slidedoc.md`: a **slidedoc** (craft heuristic, Duarte) that carries its whole argument without a speaker. It is a separate document, not derived from `presentation/slides.md`, because live slides are sparse on purpose and a slidedoc must be complete. Terms follow `presenting-vocabulary`; the layout is in [SLIDEDOC-FORMAT.md](SLIDEDOC-FORMAT.md). Converse and write file contents in the user's language; keep file names and section headings in English so the other skills can find them.
 
 ## 1. Gather
 

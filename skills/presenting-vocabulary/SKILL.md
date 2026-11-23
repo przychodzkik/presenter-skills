@@ -5,37 +5,63 @@ description: Shared terms and sourced frameworks for speeches and presentations.
 
 # Presenting vocabulary
 
-Use these terms exactly. Each has words to avoid; if the user uses one of those, say the canonical term back to them.
+Use these terms exactly. Each has words to avoid; if the user uses one of those, say the canonical term back to them. Converse and write file contents in the user's language; keep file names and section headings in English so the other skills can find them.
 
 ## The talk
 
-**Script**: the written, speakable text of the whole talk, produced before any slide exists. _Avoid_: narration, scenario.
+**Script**:
+The written, speakable text of the whole talk, produced before any slide exists.
+_Avoid_: Narration, narrative (when meaning the file), scenario
 
-**Narrative**: how content is packaged so it is easy to follow and keeps attention. _Avoid_: script, story.
+**Narrative**:
+The layer of the talk concerned with how content is packaged so it is easy to follow and keeps attention.
+_Avoid_: Script, story
 
-**Story**: events with a hero, a desire, an obstacle and a change that leads to a lesson. _Avoid_: narrative; "anecdote" unless it is short and personal.
+**Story**:
+A sequence of events with a hero, a desire, an obstacle and a change that leads to a lesson.
+_Avoid_: Narrative, anecdote (unless it is short and personal)
 
-**Payoff**: what the audience gains, as a move from their before-state to their after-state. _Avoid_: value, benefit alone.
+**Payoff**:
+What the audience gains from the talk, expressed as a move from their before-state to their after-state.
+_Avoid_: Value, benefit (alone)
 
-**Before-state / After-state**: the audience's situation, problems or beliefs on arrival, and what they know, have or intend after the talk. _Avoid_: starting world, destination world.
+**Before-state / After-state**:
+The audience's situation, problems or beliefs when they arrive, and what they know, have or intend to do after the talk.
+_Avoid_: starting world, destination world
 
-**Core message**: the one sentence the whole talk reduces to. Every part is kept or cut by whether it serves it. _Avoid_: topic, theme.
+**Core message**:
+The one-sentence statement the whole talk reduces to; every part is kept or cut by whether it serves it.
+_Avoid_: Topic, theme, commander's intent
 
-**Information gap**: the felt distance between what the audience knows and wants to know; it creates curiosity. _Avoid_: cliffhanger, teaser.
+**Information gap**:
+The felt distance between what the audience knows and what they want to know, used to create curiosity.
+_Avoid_: Cliffhanger, teaser
 
-**Hook**: the opening moment that creates an information gap or breaks an expectation. _Avoid_: intro; "opener" as a generic word.
+**Hook**:
+The opening moment that creates an information gap or breaks an expectation to earn the audience's attention.
+_Avoid_: Opener (as a generic word), intro
 
-**Sinatra test**: one vivid example that proves a claim's credibility by implication. _Avoid_: proof point.
+**Sinatra test**:
+A single vivid example that proves a claim's credibility by implication.
+_Avoid_: Proof point
 
 ## The slides
 
-**Live slides**: shown while the speaker talks; sparse, supporting the speech, never replacing it. _Avoid_: deck, presentation.
+**Live slides**:
+Slides shown while the speaker talks; sparse, supporting the speech and never replacing it.
+_Avoid_: Deck (ambiguous), presentation
 
-**Slidedoc**: a slide-formatted document written to be read without a speaker. _Avoid_: handout, leave-behind.
+**Slidedoc**:
+A slide-formatted document written to be read without a speaker.
+_Avoid_: Handout, leave-behind, slide document
 
-**Slide role**: the job one live slide does: _teaser_ raises a question, _amplifier_ shows what is being said, _punchline_ lands the conclusion. _Avoid_: slide type.
+**Slide role**:
+The job one live slide does: teaser (raises a question), amplifier (shows what is being said) or punchline (lands the conclusion).
+_Avoid_: Slide type
 
-**Slide plan**: the written list of live slides, each with role, headline, visual and reveal order, produced from the script. _Avoid_: storyboard, deck outline.
+**Slide plan**:
+The written list of live slides, each with role, headline, visual and reveal order, produced from the script.
+_Avoid_: Storyboard, deck outline
 
 ## Sources and evidence
 

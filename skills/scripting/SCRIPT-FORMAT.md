@@ -6,7 +6,7 @@ Terms follow `presenting-vocabulary`.
 # Script: <working title>
 
 - Core message:
-- Target length: <words> (<minutes> at about 130 words per minute)
+- Target length: <words> and <minutes>
 
 ## Opener
 

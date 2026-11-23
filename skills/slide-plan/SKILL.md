@@ -1,13 +1,13 @@
 ---
 name: slide-plan
-description: Plan the live slides for a talk from its script. Use when the user has a script and wants to know which slides to show, what goes on each, and when each appears; not for slides meant to be read.
+description: Plan the live slides shown while someone speaks, from the talk's script. Use when the user has a script and wants to know which slides to show, what goes on each and when each appears.
 ---
 
 # Slide plan
 
 Produce `presentation/slides.md`: a written plan of the **live slides**, one entry per slide. It stops at the plan; building the slides in a tool is left to the user or another tool. Terms follow `presenting-vocabulary`; the layout is in [SLIDES-FORMAT.md](SLIDES-FORMAT.md).
 
-For slides meant to be read without a speaker, use `slidedoc`.
+For slides meant to be read without a speaker, use `slidedoc`. Converse and write file contents in the user's language; keep file names and section headings in English so the other skills can find them.
 
 ## 1. Gather
 

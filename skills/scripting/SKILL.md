@@ -1,15 +1,15 @@
 ---
 name: scripting
-description: Write or improve the full speakable script of a talk. Use when the user has an outline, hook or story to turn into a script, or already has a draft script that sounds stiff, abstract or hard to follow.
+description: Write or improve the full speakable text of a talk. Use when the user has a plan, hook or story to turn into spoken words, or a draft script that sounds stiff, abstract or hard to follow.
 ---
 
 # Scripting
 
-Produce `presentation/script.md`: the full text, written for the ear. Terms follow `presenting-vocabulary`; the layout is in [SCRIPT-FORMAT.md](SCRIPT-FORMAT.md).
+Produce `presentation/script.md`: the full text, written for the ear. Terms follow `presenting-vocabulary`; the layout is in [SCRIPT-FORMAT.md](SCRIPT-FORMAT.md). Converse and write file contents in the user's language; keep file names and section headings in English so the other skills can find them.
 
 ## 1. Gather
 
-Read `presentation/brief.md` (duration, core message, style notes), `presentation/outline.md`, `presentation/hook.md` and `presentation/story.md` when they exist. With an existing draft, read it instead of the outline. With no `presentation/outline.md` and no draft, send the user to `structuring` first.
+Read `presentation/brief.md` (duration, core message, style notes), `presentation/outline.md`, `presentation/hook.md` and `presentation/story.md` when they exist. With an existing draft, read it instead of the outline, and add cue ids to every paragraph as SCRIPT-FORMAT.md describes. With no `presentation/outline.md` and no draft, send the user to `structuring` first.
 
 Done when you know the duration, the style notes, the core message and the source of the structure (outline or existing draft).
 
