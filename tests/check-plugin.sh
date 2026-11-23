@@ -52,4 +52,22 @@ for d in */; do
 done
 check "pre-split SKILL.md is git-ignored" grep -qx '/SKILL.md' .gitignore
 
+# Ticket 02: presentation-brief.
+BRIEF=skills/presentation-brief/SKILL.md
+FORMAT=skills/presentation-brief/BRIEF-FORMAT.md
+check "brief skill has name in frontmatter" grep -q '^name: presentation-brief$' "$BRIEF"
+check "brief skill has description"         grep -q '^description: .\{20,\}' "$BRIEF"
+for h in Occasion Audience Before-state After-state Goal Material "Opening and closing ideas" "Core message" "Style notes"; do
+  check "brief format has section: $h" grep -q "^## $h" "$FORMAT"
+done
+check "brief format records what the audience knows about the speaker" grep -qi 'knows about the speaker' "$FORMAT"
+check "brief skill asks before drafting"    grep -q 'Do not draft' "$BRIEF"
+check "brief skill requires confirmed core message" grep -qi 'confirm' "$BRIEF"
+check "brief skill skips questions already answered" grep -qi 'already answered' "$BRIEF"
+check "brief skill points to its format file" grep -q 'BRIEF-FORMAT.md' "$BRIEF"
+check "style notes are free text, no voice-profile schema" \
+  bash -c "! grep -rqi 'voice profile' skills"
+check "README marks presentation-brief available" \
+  grep -q '`presentation-brief` .*available' README.md
+
 exit $fail
