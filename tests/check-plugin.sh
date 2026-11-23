@@ -141,4 +141,32 @@ for h in 'Cue ids' 'Markers'; do
 done
 check "README marks scripting available" grep -q '`scripting` .*available' README.md
 
+# Ticket 06: slide-plan.
+PLAN=skills/slide-plan/SKILL.md
+PLANFMT=skills/slide-plan/SLIDES-FORMAT.md
+check "slide-plan skill has name in frontmatter" grep -q '^name: slide-plan$' "$PLAN"
+for w in slide script; do
+  check "slide-plan description triggers on: $w" \
+    bash -c "grep '^description:' '$PLAN' | grep -qi '$w'"
+done
+for r in teaser amplifier punchline; do
+  check "slide-plan role: $r" grep -qi "$r" "$PLAN"
+done
+check "slide-plan gives each slide one role and one idea" grep -qi 'one role and one idea' "$PLAN"
+check "slide-plan anchors slides to cue ids"       grep -qi 'cue id' "$PLAN"
+check "slide-plan forbids bullet lists"            grep -qi 'bullet' "$PLAN"
+check "slide-plan reveals long text in fragments"  grep -qi 'fragments' "$PLAN"
+for g in contrast whitespace typefaces colors; do
+  check "slide-plan visual guidance: $g" grep -qi "$g" "$PLAN"
+done
+check "slide-plan covers live slides only and points to slidedoc" \
+  bash -c "grep -qi 'live slides' '$PLAN' && grep -q 'slidedoc' '$PLAN'"
+check "slide-plan justifies slide count from the script" grep -qi 'slide count' "$PLAN"
+check "slide-plan sends users without a script to scripting" grep -qi 'no .presentation/script.md' "$PLAN"
+check "slide-plan points to its format file"       grep -q 'SLIDES-FORMAT.md' "$PLAN"
+for h in Role Headline Visual Reveal Cue; do
+  check "slides format has field: $h" grep -qi "$h" "$PLANFMT"
+done
+check "README marks slide-plan available" grep -q '`slide-plan` .*available' README.md
+
 exit $fail

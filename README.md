@@ -23,7 +23,7 @@ Add the marketplace, then install the plugin:
 | `storytelling` | Hooks and stories from your real material | available |
 | `structuring` | Outline: opener, body blocks, one call to action | available |
 | `scripting` | The full speakable script | available |
-| `slide-plan` | Written plan for live slides | planned |
+| `slide-plan` | Written plan for live slides | available |
 | `slidedoc` | A slide document written to be read | planned |
 
 The skills reply in the language you write in.
