@@ -169,4 +169,25 @@ for h in Role Headline Visual Reveal Cue; do
 done
 check "README marks slide-plan available" grep -q '`slide-plan` .*available' README.md
 
+# Ticket 07: slidedoc.
+DOC=skills/slidedoc/SKILL.md
+DOCFMT=skills/slidedoc/SLIDEDOC-FORMAT.md
+check "slidedoc skill has name in frontmatter" grep -q '^name: slidedoc$' "$DOC"
+for w in read slide; do
+  check "slidedoc description triggers on: $w" \
+    bash -c "grep '^description:' '$DOC' | grep -qi '$w'"
+done
+check "slidedoc titles are full sentences"        grep -qi 'full-sentence' "$DOC"
+check "slidedoc stands alone without a speaker"   grep -qi 'without a speaker' "$DOC"
+check "slidedoc avoids speaker-dependent phrases" grep -qi 'as I said' "$DOC"
+check "slidedoc builds from brief and script"     bash -c "grep -q 'brief.md' '$DOC' && grep -q 'script.md' '$DOC'"
+check "slidedoc works without a script"           grep -qi 'no .presentation/script.md' "$DOC"
+check "slidedoc allows dense text but structures it" bash -c "grep -qi 'dense' '$DOC' && grep -qi 'hierarchy' '$DOC'"
+check "slidedoc is not derived from slides.md"    grep -qi 'not derived from' "$DOC"
+check "slidedoc points to its format file"        grep -q 'SLIDEDOC-FORMAT.md' "$DOC"
+for h in Title Body Takeaway; do
+  check "slidedoc format has field: $h" grep -qi "$h" "$DOCFMT"
+done
+check "README marks slidedoc available" grep -q '`slidedoc` .*available' README.md
+
 exit $fail
