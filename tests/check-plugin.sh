@@ -115,4 +115,30 @@ for h in Opener Body Close Cuts; do
 done
 check "README marks structuring available" grep -q '`structuring` .*available' README.md
 
+# Ticket 05: scripting.
+SCRIPTING=skills/scripting/SKILL.md
+SCRIPTFMT=skills/scripting/SCRIPT-FORMAT.md
+check "scripting skill has name in frontmatter" grep -q '^name: scripting$' "$SCRIPTING"
+for w in script draft; do
+  check "scripting description triggers on: $w" \
+    bash -c "grep '^description:' '$SCRIPTING' | grep -qi '$w'"
+done
+check "scripting is written for the ear"          grep -qi 'aloud' "$SCRIPTING"
+check "scripting uses the ladder of abstraction"  grep -qi 'ladder of abstraction' "$SCRIPTING"
+check "scripting requires concrete examples or analogies" \
+  bash -c "grep -qi 'concrete' '$SCRIPTING' && grep -qi 'analogy' '$SCRIPTING'"
+check "scripting makes causes explicit"           grep -qi 'cause' "$SCRIPTING"
+check "scripting reads style notes"               grep -qi 'style notes' "$SCRIPTING"
+check "scripting never copies another speaker's phrases" grep -qi "another speaker's" "$SCRIPTING"
+check "scripting uses hook and story as given"    grep -qi 'as given' "$SCRIPTING"
+check "scripting offers 2-3 drafts of key passages" grep -q '2–3 drafts' "$SCRIPTING"
+check "scripting accepts an existing draft"       grep -qi 'existing draft' "$SCRIPTING"
+check "scripting works without an outline"        grep -qi 'no .presentation/outline.md' "$SCRIPTING"
+check "scripting matches script length to duration" grep -qi 'words per minute' "$SCRIPTING"
+check "scripting points to its format file"       grep -q 'SCRIPT-FORMAT.md' "$SCRIPTING"
+for h in 'Cue ids' 'Markers'; do
+  check "script format has section: $h" grep -q "^## $h" "$SCRIPTFMT"
+done
+check "README marks scripting available" grep -q '`scripting` .*available' README.md
+
 exit $fail
