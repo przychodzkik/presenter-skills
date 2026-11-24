@@ -10,7 +10,7 @@ check() { # description, command...
 }
 
 SKILL=skills/presenting-vocabulary/SKILL.md
-PUBLISHED=(README.md LICENSE CONTEXT.md .gitignore .claude-plugin skills tests/check-plugin.sh)
+PUBLISHED=(README.md LICENSE .gitignore .claude-plugin skills tests/check-plugin.sh)
 
 check "plugin manifest is valid JSON"      python3 -c 'import json;json.load(open(".claude-plugin/plugin.json"))'
 check "marketplace manifest is valid JSON" python3 -c 'import json;json.load(open(".claude-plugin/marketplace.json"))'
@@ -22,12 +22,19 @@ check "README has Sources section"         grep -q '^## Sources' README.md
 check "README has provenance note"         grep -qi 'own training and practice' README.md
 check "README has install instructions"    grep -qi '## Install' README.md
 
-# Every glossary term in CONTEXT.md appears in the skill.
-terms=$(grep -o '^\*\*[^*]*\*\*' CONTEXT.md | tr -d '*')
-while IFS= read -r term; do
-  [ -z "$term" ] && continue
-  check "skill defines: $term" grep -qF "$term" "$SKILL"
-done <<< "$terms"
+# The author's local glossary (CONTEXT.md, not published) must match the skill.
+if [ -f CONTEXT.md ]; then
+  terms=$(grep -o '^\*\*[^*]*\*\*' CONTEXT.md | tr -d '*')
+  while IFS= read -r term; do
+    [ -z "$term" ] && continue
+    check "skill defines: $term" grep -qF "$term" "$SKILL"
+  done <<< "$terms"
+  while IFS= read -r line; do
+    check "skill copies glossary line exactly: $line" grep -qF -- "$line" "$SKILL"
+  done < <(grep '^_Avoid_' CONTEXT.md)
+else
+  echo "skip - glossary checks (CONTEXT.md not present)"
+fi
 
 # Sources and myths.
 check "skill explains both evidence tags" \
@@ -224,9 +231,6 @@ check "README has no planned skills left" bash -c "! grep -q '| planned |' READM
 check "marketplace has a description" python3 -c 'import json;assert json.load(open(".claude-plugin/marketplace.json")).get("metadata",{}).get("description")'
 check "plugin has an author" python3 -c 'import json;assert json.load(open(".claude-plugin/plugin.json")).get("author")'
 # Review fixes.
-while IFS= read -r line; do
-  check "skill copies glossary line exactly: $line" grep -qF -- "$line" "$SKILL"
-done < <(grep '^_Avoid_' CONTEXT.md)
 for d in skills/*/; do
   check "reply-language line in $(basename "$d")" grep -q "user's language" "$d/SKILL.md"
 done
@@ -240,7 +244,6 @@ check "storytelling shows a Sinatra test example"     grep -qi 'for example' "$S
 check "slide-plan description says live slides" \
   bash -c "grep '^description:' '$PLAN' | grep -qi 'live slides'"
 check "frameworks cover contrast through figure and ground" grep -qi 'figure and ground' skills/presenting-vocabulary/FRAMEWORKS.md
-check "CONTEXT.md intro does not mention rehearsal" bash -c "! head -4 CONTEXT.md | grep -qi rehearsal"
 if command -v claude >/dev/null 2>&1; then
   check "claude plugin validate passes" \
     bash -c "claude plugin validate . 2>&1 | grep -q 'Validation passed'"
