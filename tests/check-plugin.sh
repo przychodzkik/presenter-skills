@@ -10,7 +10,7 @@ check() { # description, command...
 }
 
 SKILL=skills/presenting-vocabulary/SKILL.md
-PUBLISHED=(README.md LICENSE CONTEXT.md .gitignore .claude-plugin skills docs tests/check-plugin.sh)
+PUBLISHED=(README.md LICENSE CONTEXT.md .gitignore .claude-plugin skills tests/check-plugin.sh)
 
 check "plugin manifest is valid JSON"      python3 -c 'import json;json.load(open(".claude-plugin/plugin.json"))'
 check "marketplace manifest is valid JSON" python3 -c 'import json;json.load(open(".claude-plugin/marketplace.json"))'
@@ -47,7 +47,7 @@ fi
 # Every top-level directory that is not part of the plugin must be git-ignored.
 for d in */; do
   d=${d%/}
-  case "$d" in skills|tests|docs) continue;; esac
+  case "$d" in skills|tests) continue;; esac
   check "non-plugin directory is git-ignored: $d" git check-ignore -q "$d"
 done
 check "pre-split SKILL.md is git-ignored" git check-ignore -q SKILL.md
