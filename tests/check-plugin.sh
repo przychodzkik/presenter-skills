@@ -244,6 +244,16 @@ check "storytelling shows a Sinatra test example"     grep -qi 'for example' "$S
 check "slide-plan description says live slides" \
   bash -c "grep '^description:' '$PLAN' | grep -qi 'live slides'"
 check "frameworks cover contrast through figure and ground" grep -qi 'figure and ground' skills/presenting-vocabulary/FRAMEWORKS.md
+# Trial findings.
+check "brief surveys a folder of source material"   bash -c "grep -qi 'survey' '$BRIEF' && grep -qi 'folder' '$BRIEF'"
+check "brief records source folders"                grep -qi 'source folder' "$FORMAT"
+check "brief marks unchecked recommendations"       grep -q 'accepted recommendation' "$BRIEF"
+check "brief tells users recommendations are guesses" grep -qi 'guesses' "$BRIEF"
+check "scripting offers options when material is too thin" \
+  bash -c "grep -qi 'too thin' '$SCRIPTING' && grep -qi 'shorten the talk' '$SCRIPTING' && grep -qi 'add material' '$SCRIPTING'"
+check "structuring checks material against the core message" grep -qi 'contradicts' "$STRUCT"
+check "outline format has a Tensions section"       grep -q '^## Tensions' "$OUTLINE"
+check "structuring asks which verdicts do not match experience" grep -qi 'does not match their experience' "$STRUCT"
 if command -v claude >/dev/null 2>&1; then
   check "claude plugin validate passes" \
     bash -c "claude plugin validate . 2>&1 | grep -q 'Validation passed'"

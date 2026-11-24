@@ -36,7 +36,7 @@ Done when every paragraph passes each rule or carries a marker listing what is m
 
 ## 4. Length
 
-Compare the script to the duration minus Q&A at about 130 words per minute (craft heuristic; faster or slower speakers adjust). Trim or extend until within ten percent, or until the user accepts the difference.
+Compare the script to the duration minus Q&A at about 130 words per minute (craft heuristic; faster or slower speakers adjust). Trim or extend until within ten percent, or until the user accepts the difference. Extend only with material the user has. When the material is too thin to extend the script, offer three options: shorten the talk and give the time to Q&A, add material (a real story, a second example, a moment for the audience), or both.
 
 Done when the word count and the target are stated and the gap is within ten percent or accepted.
 

@@ -29,7 +29,7 @@ What they will know, have or intend to do when they leave. This is the payoff.
 Teach or persuade, and the speaker's own goals in up to three lines.
 
 ## Material
-Everything the user brought: documents, data, stories, numbers, links, with one line each on what it is.
+Everything the user brought: documents, data, stories, numbers, links, with one line each on what it is. Give the path of any source folder. Mark a field the user accepted without checking with `accepted recommendation`.
 
 ## Opening and closing ideas
 - How the user imagines the start:

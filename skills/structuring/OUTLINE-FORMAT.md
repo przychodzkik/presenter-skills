@@ -30,6 +30,10 @@ Terms follow `presenting-vocabulary`.
 - Serves: <part of the core message>
 - Minutes:
 
+## Tensions
+| Source | What it says | How the talk deals with it |
+|---|---|---|
+
 ## Cuts
 | Item | Verdict (cut or park) | Reason |
 |---|---|---|

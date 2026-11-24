@@ -17,7 +17,9 @@ Done when you can state the core message, the duration, the goal and the list of
 
 Give every item of raw material a verdict: keep, cut, or park for later. Each keep names the part of the core message it serves; each cut and park gives a reason in one line. Ask the user about items you cannot place.
 
-Done when every item has a verdict and a reason.
+Then check the material against the core message: list anything in it that contradicts or complicates the core message, and ask how the talk should deal with each. Ask the user to name any verdict that does not match their experience; a verdict they only accepted is marked as such.
+
+Done when every item has a verdict and a reason, and every tension has an answer.
 
 ## 3. Choose body blocks
 
