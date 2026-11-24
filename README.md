@@ -9,7 +9,7 @@ Each skill does one job, works on its own, and hands work to the next one throug
 Add the marketplace, then install the plugin:
 
 ```
-/plugin marketplace add <github-owner>/presenter-skills
+/plugin marketplace add przychodzkik/presenter-skills
 /plugin install presenter-skills@presenter-skills
 ```
 
